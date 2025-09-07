@@ -1,0 +1,312 @@
+/* --- Variáveis Globais --- */
+:root {
+  --cor-primaria: #2c3e50;
+  --cor-secundaria: #3498db;
+  --cor-clara: #d4d7d8;
+  --cor-clara1: #ecf0f1;
+  --cor-texto: #333;
+  --cor-branca: #ffffff;
+  --cor-sucesso: #27ae60;
+  --cor-destaque-bg: #e74c3c;
+  --cor-destaque-texto: #ffffff;
+
+  --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  --espacamento-padrao: 1rem;
+  --raio-borda: 8px;
+  --sombra-padrao: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transicao-rapida: 0.3s ease;
+}
+
+/* --- ESTILOS GLOBAIS --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  font-family: var(--fonte-principal);
+  background-color: var(--cor-clara);
+  color: var(--cor-texto);
+}
+
+
+.main-header {
+  height: 10vh;
+  max-height: 100px;
+  background-color: var(--cor-primaria);
+  color: var(--cor-branca);
+  padding: var(--espacamento-padrao);
+  box-shadow: var(--sombra-padrao);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  nav {
+    ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+
+      li a {
+        color: var(--cor-branca);
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border-radius: var(--raio-borda);
+        transition: background-color var(--transicao-rapida);
+
+        &:hover {
+          background-color: var(--cor-secundaria);
+        }
+      }
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  max-height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: var(--espacamento-padrao);
+  padding: var(--espacamento-padrao);
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    & {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.menu {
+  background-color: var(--cor-branca);
+  padding: var(--espacamento-padrao);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-padrao);
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: var(--espacamento-padrao);
+
+      a {
+        color: var(--cor-texto);
+        text-decoration: none;
+        font-weight: bold;
+        display: block;
+        padding: 0.75rem;
+        border-radius: var(--raio-borda);
+        transition: background-color var(--transicao-rapida), color var(--transicao-rapida);
+
+        &:hover {
+          background-color: var(--cor-secundaria);
+          color: var(--cor-branca);
+        }
+      }
+    }
+  }
+}
+
+.content {
+  max-height: 100%;
+  overflow: hidden;
+  background-color: var(--cor-branca);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-padrao);
+
+  .header-content{
+    width: 100%;
+    height: 10%;
+    max-height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--espacamento-padrao);
+    /* background-color: #3498db; */
+    border-bottom: 1px solid #7f8c8d;
+    text-align: center;
+    font-family: var(--fonte-principal);
+    color: var(--cor-primaria, #2c3e50);
+  }
+}
+.content-posts{
+  box-shadow: inset var(--sombra-padrao);
+}
+
+footer {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branca);
+  text-align: center;
+  padding: var(--espacamento-padrao);
+}
+
+
+/* --- LISTA DE POSTS --- */
+
+.posts-container {
+  max-height: 90%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .post-card {
+    width: 100%;
+    background-color: var(--cor-branca, #af3a3a);
+    border-radius: var(--raio-borda, 8px);
+    box-shadow: var(--sombra-padrao, 0 4px 8px rgba(0, 0, 0, 0.1));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .post-header {
+      height: 50px;
+      background-color: #27ae60;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+
+      .post-titulo {
+        margin: 0 0 0.5rem 0;
+        color: var(--cor-primaria, #2c3e50);
+        font-size: 24px;
+      }
+    }
+    .post-conteudo {
+      padding: 1.5rem;
+      flex-grow: 1;
+      color: var(--cor-texto, #333);
+      line-height: 1.6;
+    }
+    .post-acoes {
+      background-color: #f8f9fa;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+  }
+
+  .post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn {
+    text-decoration: none;
+    color: var(--cor-branca, #ffffff);
+    font-weight: bold;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--raio-borda, 8px);
+    text-align: center;
+    transition: opacity 0.3s ease;
+  }
+  .btn:hover {opacity: 0.85;}
+  .btn-alterar {background-color: var(--cor-secundaria, #3498db);}
+  .btn-deletar {background-color: var(--cor-destaque-bg, #e74c3c);}
+}
+
+
+/* -- FORMULÁRIO DE CRIAÇÃO DE POSTS */
+
+.form-header {
+  background-color: var(--cor-destaque-bg);
+  color: var(--cor-destaque-texto);
+  font-family: var(--fonte-principal);
+  padding: var(--espacamento-padrao);
+  margin-bottom: var(--espacamento-padrao);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+
+  label {
+    font-weight: bold;
+    color: var(--cor-texto, #333);
+    margin-bottom: 0;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-family: var(--fonte-principal, sans-serif);  
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: var(--raio-borda, 8px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Efeito de foco para dar feedback ao usuário */
+  form input[type="text"]:focus,
+  form textarea:focus {
+    outline: none;
+    border-color: var(--cor-secundaria, #3498db);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+  }
+
+  .insereConteudo {
+    min-height: 150px;
+    resize: vertical; /* Permite que o usuário redimensione apenas na vertical */
+  }
+
+  .botaoVerde {
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    align-self: flex-end; /* Alinha o botão à direita */
+    background-color: var(--cor-sucesso);
+    color: var(--cor-branca);
+    font-weight: bold;
+    font-family: var(--fonte-principal);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--raio-borda);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .botaoAzul {
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    align-self: flex-end;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branca);
+    font-weight: bold;
+    font-family: var(--fonte-principal);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--raio-borda);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+

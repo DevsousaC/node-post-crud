@@ -1,0 +1,32 @@
+<header class="header-content">
+  <h1 class="titulo-content">Lista de Posts</h1>
+</header>
+
+<section class="posts-container">
+
+  {{#each posts}}
+  <article class="post-card">
+    
+    <header class="post-header">
+        <h2 class="post-titulo">{{titulo}}</h2>
+      <div class="post-meta">
+        {{!-- <span>Publicado em: {{createdAt}}</span> --}}
+        {{!-- <span>ID: {{id}}</span> --}}
+      </div>
+    </header>
+    
+    <div class="post-conteudo">
+      <p>{{conteudo}}</p>
+    </div>
+    
+    {{! Agrupamos os links de ação em uma div }}
+    <footer class="post-acoes">
+      <a href="/alterar/{{id}}" class="btn btn-alterar">Alterar</a>
+      <a href="/deletar/{{id}}" class="btn btn-deletar">Deletar</a>
+    </footer>
+    
+  </article>
+  {{/each}}
+
+</section>
+

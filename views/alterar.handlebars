@@ -1,0 +1,20 @@
+<header class="form-header">
+  <h1 class="form-title">Editar postagem</h1>
+</header>
+
+<form action="/update" method="POST">
+
+{{#each posts}}
+ <label>Código: </label>
+ <input type="text" name="id" value="{{id}}" readonly="true">
+ 
+ <label>Titulo: </label>
+ <input type="text" name="titulo" value="{{titulo}}">
+
+ <label>Conteúdo:</label>
+ <textarea name="conteudo">{{conteudo}}</textarea><br>
+
+ <input type="submit" value="Alterar" class="botaoAzul">
+{{/each}}
+
+</form>
