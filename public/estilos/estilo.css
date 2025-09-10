@@ -73,7 +73,7 @@ body {
   max-width: 1400px;
   max-height: 90vh;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 3fr 1fr;
   gap: var(--espacamento-padrao);
   padding: var(--espacamento-padrao);
   margin: 0 auto;
@@ -85,31 +85,28 @@ body {
   }
 }
 
-.menu {
+.aside{
   background-color: var(--cor-branca);
   padding: var(--espacamento-padrao);
   border-radius: var(--raio-borda);
   box-shadow: var(--sombra-padrao);
+}
 
-  ul {
-    list-style: none;
-
-    li {
-      margin-bottom: var(--espacamento-padrao);
-
-      a {
-        color: var(--cor-texto);
-        text-decoration: none;
-        font-weight: bold;
-        display: block;
-        padding: 0.75rem;
-        border-radius: var(--raio-borda);
-        transition: background-color var(--transicao-rapida), color var(--transicao-rapida);
-
-        &:hover {
-          background-color: var(--cor-secundaria);
-          color: var(--cor-branca);
-        }
+.menu ul {
+  list-style: none;
+  li {
+    margin-bottom: var(--espacamento-padrao);
+    a {
+      color: var(--cor-texto);
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+      padding: 0.75rem;
+      border-radius: var(--raio-borda);
+      transition: background-color var(--transicao-rapida), color var(--transicao-rapida);
+      &:hover {
+        background-color: var(--cor-secundaria);
+        color: var(--cor-branca);
       }
     }
   }
@@ -139,6 +136,26 @@ body {
 }
 .content-posts{
   box-shadow: inset var(--sombra-padrao);
+}
+
+.perfil{
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+
+  .profile-icon{
+    width: 100px;
+    height: 100px;
+    border-radius: 50% 50%;
+    margin: 4px;
+  }
+
+  .user-content{
+    text-align: start;
+  }
 }
 
 footer {
@@ -223,7 +240,6 @@ footer {
 /* -- FORMULÁRIO DE CRIAÇÃO DE POSTS */
 
 .form-header {
-  background-color: var(--cor-destaque-bg);
   color: var(--cor-destaque-texto);
   font-family: var(--fonte-principal);
   padding: var(--espacamento-padrao);
@@ -244,6 +260,13 @@ form {
     margin-bottom: 0;
   }
 
+  .id{
+    width: fit-content;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--raio-borda, 8px);
+  }
+
   input[type="text"],
   textarea {
     width: 100%;
@@ -255,6 +278,11 @@ form {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
+  textarea{
+    height: 100px;
+    resize: vertical;
+  }
+
   /* Efeito de foco para dar feedback ao usuário */
   form input[type="text"]:focus,
   form textarea:focus {
@@ -262,6 +290,10 @@ form {
     border-color: var(--cor-secundaria, #3498db);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
   }
+
+  
+
+
 
   .insereConteudo {
     min-height: 150px;
