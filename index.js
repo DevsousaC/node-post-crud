@@ -24,20 +24,20 @@ app.use("/imagens", express.static("public/img"));
 app.get('/', function(req, res){
   Post.findAll().then(function(posts){
     posts=posts.map((post) => {return post.toJSON()});
-    res.render('home', {posts: posts})
+    res.render('home', {posts: posts, layout: 'content-layout'})
   });
 });
 
 //rota para o cadastro
 app.get('/cad', function(req, res){
-  res.render('form');
+  res.render('form', {layout: 'content-layout'});
 });
 
 //fazendo a inserção no banco
 app.post('/add', function(req, res){
   Post.create({
-    titulo: req.body.titulo,
-    conteudo: req.body.conteudo
+    titulo: req.body.insereTitulo,
+    conteudo: req.body.insereConteudo
   }).then(function(){
     //redirecionando para home com o barra
     res.redirect('/')
@@ -52,7 +52,7 @@ app.get   ('/alterar/:id', function(req, res) {
     then(function(posts) {
 
       posts=posts.map((post) => {return post.toJSON()});
-      res.render('alterar', {posts: posts})
+      res.render('alterar', {posts: posts, layout: 'content-layout'})
     });
 });
 
@@ -66,7 +66,7 @@ app.post('/update', function(req, res) {
   }).then(function(){
     res.redirect('/');
   }).catch(function(erro){
-    res.send("Está postagem não existe"+erro)
+    res.send("Está postagem não existe" + erro)
   });
 });
 
