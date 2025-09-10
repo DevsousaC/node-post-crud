@@ -30,7 +30,12 @@ app.get('/', function(req, res){
 
 //rota para o cadastro
 app.get('/cad', function(req, res){
-  res.render('form', {layout: 'content-layout'});
+
+  const bgColor = "#27ae60";
+
+  res.render('form', {
+    bgColor: bgColor,
+    layout: 'content-layout'});
 });
 
 //fazendo a inserção no banco
@@ -51,8 +56,13 @@ app.get   ('/alterar/:id', function(req, res) {
   Post.findAll({where: {id: req.params.id}}).
     then(function(posts) {
 
+      const bgColor = "#3498db";
+
       posts=posts.map((post) => {return post.toJSON()});
-      res.render('alterar', {posts: posts, layout: 'content-layout'})
+      res.render('alterar', {
+        posts: posts,
+        bgColor: bgColor,
+        layout: 'content-layout'})
     });
 });
 
