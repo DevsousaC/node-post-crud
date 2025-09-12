@@ -320,11 +320,10 @@ form {
     }
   }
 
-  .botaoAzul {
+  .botao {
     margin-top: 1.5rem;
     padding: 0.8rem 1.5rem;
     align-self: flex-end;
-    background-color: var(--cor-secundaria);
     color: var(--cor-branca);
     font-weight: bold;
     font-family: var(--fonte-principal);
