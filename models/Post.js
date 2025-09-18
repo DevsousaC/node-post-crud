@@ -1,14 +1,25 @@
-const db = require('./db');
+// models/Post.js
+const mongoose = require('mongoose');
 
-const post = db.sequelize.define('postagens', {
+const PostSchema = new mongoose.Schema({
+  
   titulo: {
-    type: db.Sequelize.STRING
+    type: String,
+    required: true
   },
   conteudo: {
-    type: db.Sequelize.TEXT
+    type: String,
+    required: true
+  },
+  autor: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 });
 
-post.sync({force: false});
-
-module.exports = post;
+module.exports = mongoose.model('Post', PostSchema);
