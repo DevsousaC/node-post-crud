@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    container_name: blog-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - MONGO_URI=mongodb://db:27017
+    depends_on:
+      - db
+
+  # Serviço do Banco de Dados MongoDB
+  db:
+    image: mongo:latest
+    container_name: blog-db
+    ports:
+      - "27017:27017" # Mapeia a porta do MongoDB para seu PC (útil para debug com MongoDB Compass)
+    volumes:
+      - mongodata:/data/db # Garante que os dados do banco persistam mesmo se o container for removido
+
+volumes:
+  mongodata:
