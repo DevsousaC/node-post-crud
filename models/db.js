@@ -1,12 +1,15 @@
-const Sequelize = require('sequelize');
+const mongoose = require('mongoose');
 
-const sequelize = new Sequelize('postapp', 'root', 'root', {
-  host: 'localhost',
-  port: 3306,
-  dialect: 'mysql'
-});
+const dbURI = process.env.MONGO_URI || 'mongodb://blog-db:27017/meu-blog';
 
-module.exports = {
-  Sequelize: Sequelize,
-  sequelize: sequelize
-}
+const connectDB = async () => {
+  try {
+    await mongoose.connect(dbURI, {});
+    console.log(`MongoDB conectado com sucesso em: ${dbURI}`);
+  } catch (err) {
+    console.error('Erro ao conectar com o MongoDB:', err.message);
+    process.exit(1);
+  }
+};
+
+module.exports = connectDB;
