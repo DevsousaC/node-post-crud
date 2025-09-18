@@ -1,6 +1,8 @@
 <aside class="aside menu">
   <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="/cad">Novo Post</a></li>
+    {{#if hasUser}}
+      <li><a href="/cad">Novo Post</a></li>
+    {{/if}}
   </ul>
 </aside>

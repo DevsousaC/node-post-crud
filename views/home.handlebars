@@ -19,10 +19,15 @@
       <p>{{conteudo}}</p>
     </div>
     
-    {{! Agrupamos os links de ação em uma div }}
     <footer class="post-acoes">
-      <a href="/alterar/{{id}}" class="btn btn-alterar">Alterar</a>
-      <a href="/deletar/{{id}}" class="btn btn-deletar">Deletar</a>
+      <small>Escrito por: {{this.autor.username}}</small>
+      <div class="buttons">
+
+        {{#if ../hasUser}}
+          <a href="/alterar/{{id}}" class="btn btn-alterar">Alterar</a>
+          <a href="/deletar/{{id}}" class="btn btn-deletar">Deletar</a>
+        {{/if}}
+      </div>
     </footer>
     
   </article>
